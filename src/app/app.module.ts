@@ -9,7 +9,8 @@ import { PlaintextComponent } from './components/plaintext/plaintext.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { ClickBasedComponent } from './components/click-based/click-based.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { UserSelectComponent } from './components/user-select/user-select.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FrontPageBodyComponent,
     PlaintextComponent,
     SelectionComponent,
-    ClickBasedComponent
+    ClickBasedComponent,
+    UserSelectComponent
   ],
   imports: [
     BrowserModule,

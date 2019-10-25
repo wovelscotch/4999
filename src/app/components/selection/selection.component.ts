@@ -29,12 +29,12 @@ export class SelectionComponent implements OnInit {
   }
   onImageClick(i: number) {
     this.selectedIndex = i;
-    console.log(i);
+
   }
   onSubmitClick() {
-    console.log("submit")
+
   }
   onClearClick() {
-    console.log("clear")
+
   }
 }
