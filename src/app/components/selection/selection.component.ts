@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
+
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 
 @Component({
   selector: 'app-selection',
@@ -7,9 +14,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectionComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
-
+  location: string = "assets/pictures/";
+  endtag: string = ".jpg";
+  images: string[] = [];
+  NUM: number = 25;
+  selectedIndex: number;
+  ngOnInit() {
+    for (let i = 0; i < this.NUM; i++) {
+      let newRef = this.location + i + this.endtag;
+      this.images.push(newRef);
+    }
+  }
+  onImageClick(i: number) {
+    this.selectedIndex = i;
+    console.log(i);
+  }
+  onSubmitClick() {
+    console.log("submit")
+  }
+  onClearClick() {
+    console.log("clear")
+  }
 }
