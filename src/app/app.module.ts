@@ -8,6 +8,8 @@ import { FrontPageBodyComponent } from './components/front-page-body/front-page-
 import { PlaintextComponent } from './components/plaintext/plaintext.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { ClickBasedComponent } from './components/click-based/click-based.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ClickBasedComponent } from './components/click-based/click-based.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
