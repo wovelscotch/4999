@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./site-b.component.css']
 })
 export class SiteBComponent implements OnInit {
-
+  title: string = 'Site B';
   constructor() { }
 
   ngOnInit() {

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteAComponent implements OnInit {
 
+  title: string = 'Site A';
   constructor() { }
 
   ngOnInit() {
