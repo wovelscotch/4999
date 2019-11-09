@@ -8,6 +8,8 @@ import { SiteBComponent } from './components/sites/site-b/site-b.component';
 import { SiteCComponent } from './components/sites/site-c/site-c.component';
 import { SiteDComponent } from './components/sites/site-d/site-d.component';
 import { SiteEComponent } from './components/sites/site-e/site-e.component';
+import { UserSelectComponent } from './components/user-select/user-select.component';
+import { UserExistingComponent } from './components/user-existing/user-existing.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'site-c', component: SiteCComponent },
   { path: 'site-d', component: SiteDComponent },
   { path: 'site-e', component: SiteEComponent },
+  { path: 'user-select', component: UserSelectComponent },
+  { path: 'user', component: UserExistingComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

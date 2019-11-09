@@ -17,6 +17,7 @@ import { SiteBComponent } from './components/sites/site-b/site-b.component';
 import { SiteCComponent } from './components/sites/site-c/site-c.component';
 import { SiteDComponent } from './components/sites/site-d/site-d.component';
 import { SiteEComponent } from './components/sites/site-e/site-e.component';
+import { UserExistingComponent } from './components/user-existing/user-existing.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SiteEComponent } from './components/sites/site-e/site-e.component';
     SiteBComponent,
     SiteCComponent,
     SiteDComponent,
-    SiteEComponent
+    SiteEComponent,
+    UserExistingComponent
   ],
   imports: [
     BrowserModule,
