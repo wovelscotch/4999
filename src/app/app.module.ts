@@ -18,6 +18,8 @@ import { SiteCComponent } from './components/sites/site-c/site-c.component';
 import { SiteDComponent } from './components/sites/site-d/site-d.component';
 import { SiteEComponent } from './components/sites/site-e/site-e.component';
 import { UserExistingComponent } from './components/user-existing/user-existing.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { UserExistingComponent } from './components/user-existing/user-existing.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
