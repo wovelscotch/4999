@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class=col-3></div>
+        <div class=col-6>
+            <div class="card m-4">
+                <div>
+                    <form class="m-4">
+                        <div class=" form-group">
+                            <input [(ngModel)]="firstname" type="text" name="user" class="form-control"
+                                id="parent-username" placeholder="Enter name">
+                            <small class="form-text text-muted">Enter an identifier you will remember</small>
+                            <input [(ngModel)]="secondname" name="confirm" type="text" class="form-control"
+                                id="confirm-username" placeholder="Re-enter name">
+                            <h5 class="m-1 red" [hidden]="isMatch">User name does not match</h5>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-primary mb-4 ml-4" (click)="onSubmit()">submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

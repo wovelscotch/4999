@@ -9,7 +9,17 @@ import { PlaintextComponent } from './components/plaintext/plaintext.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { ClickBasedComponent } from './components/click-based/click-based.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { UserSelectComponent } from './components/user-select/user-select.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SiteAComponent } from './components/sites/site-a/site-a.component';
+import { SiteBComponent } from './components/sites/site-b/site-b.component';
+import { SiteCComponent } from './components/sites/site-c/site-c.component';
+import { SiteDComponent } from './components/sites/site-d/site-d.component';
+import { SiteEComponent } from './components/sites/site-e/site-e.component';
+import { UserExistingComponent } from './components/user-existing/user-existing.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,13 +28,23 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FrontPageBodyComponent,
     PlaintextComponent,
     SelectionComponent,
-    ClickBasedComponent
+    ClickBasedComponent,
+    UserSelectComponent,
+    PageNotFoundComponent,
+    SiteAComponent,
+    SiteBComponent,
+    SiteCComponent,
+    SiteDComponent,
+    SiteEComponent,
+    UserExistingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
