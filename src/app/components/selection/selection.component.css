@@ -1,3 +1,6 @@
 .highlight {
     filter: brightness(50%)
 }
+.red {
+    color:red;
+}

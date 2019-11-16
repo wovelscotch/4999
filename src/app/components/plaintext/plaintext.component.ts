@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Login } from 'src/app/models/login.model';
 
 @Component({
   selector: 'app-plaintext',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaintextComponent implements OnInit {
 
+  username: string;
+  password: string;
+  user = new Login;
   constructor() { }
 
+  @Output() submission = new EventEmitter;
+
   ngOnInit() {
+  }
+  onSubmit() {
+    this.user.username = this.username;
+    this.user.password = this.password;
+    this.submission.emit(this.user);
   }
 
 }

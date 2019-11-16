@@ -4,11 +4,6 @@ export class User {
     type: number;
 }
 
-export interface UserJson {
-    username: string;
-    type: number;
-}
-
 export class Item {
     Item: any;
 }
