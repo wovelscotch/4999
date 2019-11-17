@@ -22,6 +22,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Sitea1Component } from './components/sites/sitea1/sitea1.component';
 import { Sitea2Component } from './components/sites/sitea2/sitea2.component';
+import { Siteb1Component } from './components/sites/siteb1/siteb1.component';
+import { Siteb2Component } from './components/sites/siteb2/siteb2.component';
+import { Sitec2Component } from './components/sites/sitec2/sitec2.component';
+import { Sitec1Component } from './components/sites/sitec1/sitec1.component';
+import { FinishedComponent } from './components/sites/finished/finished.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,12 @@ import { Sitea2Component } from './components/sites/sitea2/sitea2.component';
     SiteEComponent,
     UserExistingComponent,
     Sitea1Component,
-    Sitea2Component
+    Sitea2Component,
+    Siteb1Component,
+    Siteb2Component,
+    Sitec2Component,
+    Sitec1Component,
+    FinishedComponent
   ],
   imports: [
     BrowserModule,

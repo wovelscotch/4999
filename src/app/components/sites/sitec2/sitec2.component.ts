@@ -4,19 +4,19 @@ import { Login } from 'src/app/models/login.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sitea2',
-  templateUrl: './sitea2.component.html',
-  styleUrls: ['./sitea2.component.css']
+  selector: 'app-sitec2',
+  templateUrl: './sitec2.component.html',
+  styleUrls: ['./sitec2.component.css']
 })
-export class Sitea2Component implements OnInit {
+export class Sitec2Component implements OnInit {
 
   constructor(private userService: UsersService, private router: Router) { }
 
   ngOnInit() {
   }
   submit(user: Login) {
-    this.userService.createLogin(user, 'a');
-    this.router.navigateByUrl(`/site-b2`);
+    this.userService.createLogin(user, 'c');
+    this.router.navigateByUrl(`/finished`);
   }
 
 }

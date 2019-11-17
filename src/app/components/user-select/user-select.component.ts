@@ -26,6 +26,7 @@ export class UserSelectComponent implements OnInit {
       var newUser = new User;
       newUser.username = this.firstname;
       newUser.type = Math.floor(Math.random() * Math.floor(2)) + 1;
+      console.log(newUser.type);
       //check user does not exist
 
       //send to DB

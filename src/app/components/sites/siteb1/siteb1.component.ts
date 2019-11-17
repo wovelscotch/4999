@@ -4,11 +4,11 @@ import { UsersService } from 'src/users.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sitea1',
-  templateUrl: './sitea1.component.html',
-  styleUrls: ['./sitea1.component.css']
+  selector: 'app-siteb1',
+  templateUrl: './siteb1.component.html',
+  styleUrls: ['./siteb1.component.css']
 })
-export class Sitea1Component implements OnInit {
+export class Siteb1Component implements OnInit {
 
   constructor(private userService: UsersService, private router: Router) { }
 
@@ -16,7 +16,7 @@ export class Sitea1Component implements OnInit {
   }
 
   submit(user: Login) {
-    this.userService.createLogin(user, 'a');
-    this.router.navigateByUrl(`/site-b1`);
+    this.userService.createLogin(user, 'b');
+    this.router.navigateByUrl(`/site-c1`);
   }
 }
