@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UsersService } from 'src/users.service';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
@@ -15,6 +15,7 @@ export class UserExistingComponent implements OnInit {
   user: User;
   sent: boolean = false;
   dne = false;
+
   constructor(private userService: UsersService, private router: Router) { }
 
   ngOnInit() {
@@ -27,6 +28,7 @@ export class UserExistingComponent implements OnInit {
   }
   onClick() {
     this.sent = false;
+    this.userService.save(this.username);
     this.router.navigateByUrl(`/site-a${this.user.type}`);
   }
 }

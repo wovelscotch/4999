@@ -12,8 +12,9 @@ import { Login } from './app/models/login.model';
 export class UsersService {
 
   url = "https://m7to704tc3.execute-api.us-east-2.amazonaws.com/prod/";
-
+  savename: string;
   @Output() found = new EventEmitter();
+
 
   constructor(
     private http: HttpClient
@@ -37,5 +38,11 @@ export class UsersService {
   }
   createLogin(user: Login, site) {
     return this.http.post(`${this.url}site${site}/?username=${user.username}&password=${user.password}`, {}).subscribe();
+  }
+  save(username: string) {
+    this.savename = username;
+  }
+  load(): string {
+    return this.savename;
   }
 }

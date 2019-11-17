@@ -19,19 +19,14 @@ export class UserSelectComponent implements OnInit {
   }
 
   onSubmit() {
-    //finalize username
     var newUser = new User;
     newUser.username = this.firstname;
+    this.userService.save(this.firstname);
     newUser.type = Math.floor(Math.random() * Math.round(2)) + 1;
-    for (let i = 0; i < 10; i++) {
-      console.log(Math.round(Math.random()) + 1);
-    }
-    console.log(newUser.type);
     //check user does not exist
 
     //send to DB
     this.userService.createUser(newUser);
-    //export?
     this.router.navigateByUrl(`/site-a${newUser.type}`);
 
   }
