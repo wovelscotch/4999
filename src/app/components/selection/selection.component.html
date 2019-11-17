@@ -1,4 +1,4 @@
-<div class="card p-3">
+<div class="card p-3 m-3">
     <input [(ngModel)]="username" type="text" name="user" class="form-control m-3" id="username" placeholder="Username">
     <mat-grid-list cols="5" rowHeight="100px">
         <mat-grid-tile *ngFor="let image of images; index as i;" (click)="onImageClick(i)">
@@ -13,7 +13,7 @@
     <div>
         <h5 class="red" [hidden]="!noUser">Username is empty</h5>
         <h5 class="red" [hidden]="!noPicture">Password cannot be empty</h5>
-        <button type="submit" class="btn btn-primary" (click)="onSubmitClick()">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmitClick()">Login</button>
         <button type="submit" class="btn btn-secondary m-3" (click)="onClearClick()">Clear</button>
     </div>
 </div>
