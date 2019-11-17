@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteCComponent implements OnInit {
 
-  title: string = 'Site C';
+  title: string = 'The Media Socializer';
+  tag: string = "~Tell your friends what's going on~"
   constructor() { }
 
   ngOnInit() {
