@@ -1,1 +1,28 @@
-<p>user-existing works!</p>
+<div class="container">
+    <div class="row">
+        <div class=col-3></div>
+        <div class=col-6>
+            <div class="card m-4">
+                <div>
+                    <form class="m-4">
+                        <div class=" form-group">
+                            <input [(ngModel)]="username" type="text" name="user" class="form-control" id="username"
+                                placeholder="Enter Username">
+                        </div>
+                    </form>
+                    <button [hidden]="sent" type="button" class="btn btn-primary mb-4 ml-4"
+                        (click)="onSubmit()">submit</button>
+                </div>
+                <div [hidden]="!sent">
+                    <div [hidden]="this.user">
+                        <p>Loading...</p>
+                    </div>
+                    <div [hidden]="!this.user">
+                        <p class="m-4">User is loaded</p>
+                        <button type="button" class="btn btn-primary mb-4 ml-4" (click)="onClick()">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
