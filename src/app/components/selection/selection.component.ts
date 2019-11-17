@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule, EventEmitter, Output } from '@angular/core';
 import { Login } from 'src/app/models/login.model';
+import { UsersService } from 'src/users.service';
 
 export interface Tile {
   color: string;
@@ -30,10 +31,11 @@ export class SelectionComponent implements OnInit {
 
   @Output() submission = new EventEmitter;
 
-  constructor() {
+  constructor(private userService: UsersService) {
   }
 
   ngOnInit() {
+    this.username = this.userService.load();
     for (let i = 0; i < this.NUM; i++) {
       let newRef = this.location + i + this.endtag;
       this.images.push(newRef);

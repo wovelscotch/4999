@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Login } from 'src/app/models/login.model';
+import { UsersService } from 'src/users.service';
 
 @Component({
   selector: 'app-plaintext',
@@ -11,25 +12,16 @@ export class PlaintextComponent implements OnInit {
   username: string;
   password: string;
   user = new Login;
-  constructor() { }
+  constructor(private service: UsersService) { }
 
   @Output() submission = new EventEmitter;
 
   ngOnInit() {
+    this.username = this.service.load();
   }
   onSubmit() {
     this.user.username = this.username;
     this.user.password = this.password;
     this.submission.emit(this.user);
   }
-
-  hash(str: string) {
-    var hash = 5381;
-    var i = str.length;
-    while (i) {
-      hash = (hash * 33) ^ str.charCodeAt(--i);
-    }
-    return hash >>> 0;
-  }
-
 }
