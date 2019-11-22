@@ -16,7 +16,9 @@ export class Siteb1Component implements OnInit {
   }
 
   submit(user: Login) {
-    this.userService.createLogin(user, 'b');
+    if (!this.userService.getIsExisting()) {
+      this.userService.createLogin(user, 'b');
+    }
     this.router.navigateByUrl(`/site-c1`);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, NgModule, EventEmitter, Output, Input } from '@angular/core';
 import { Login } from 'src/app/models/login.model';
 import { UsersService } from 'src/users.service';
 
@@ -28,7 +28,10 @@ export class SelectionComponent implements OnInit {
   password: string = "";
   noPicture: boolean = false;
   noUser: boolean = false;
+  failed: boolean = false;
+  counter: number = 0;
 
+  @Input() site: string;
   @Output() submission = new EventEmitter;
 
   constructor(private userService: UsersService) {
@@ -36,6 +39,9 @@ export class SelectionComponent implements OnInit {
 
   ngOnInit() {
     this.username = this.userService.load();
+    if (this.userService.getIsExisting()) {
+      this.userService.getLoginByName(this.username, this.site).subscribe(u => this.user = u);
+    }
     for (let i = 0; i < this.NUM; i++) {
       let newRef = this.location + i + this.endtag;
       this.images.push(newRef);
@@ -49,6 +55,10 @@ export class SelectionComponent implements OnInit {
     this.selectedIndex = i;
     var match = this.images[i].match(/(\d+)/);
     this.imageSelection.push(match[0]);
+    if (this.imageSelection.length == 1)
+      this.password = this.imageSelection[0].toString();
+    else
+      this.password += this.imageSelection[this.imageSelection.length - 1].toString();
     this.shuffle(this.images);
   }
   shuffle(array: any[]) {
@@ -60,17 +70,38 @@ export class SelectionComponent implements OnInit {
     }
   }
   onSubmitClick() {
-    if (this.imageSelection.length < 1) {
-      this.noPicture = true;
-    } else if (!this.username) {
-      this.noUser = true;
+    this.failed = false;
+    if (this.userService.getIsExisting()) {
+      if (this.userService.hash(this.password) != this.user.password) {
+        this.failed = true;
+        this.counter++;
+        this.userService.createlog(this.username, `Failed ${this.site}`);
+        if (this.counter >= 3)
+          this.submission.emit(this.user);
+        this.onClearClick();
+      } else {
+        this.failed = false;
+        this.userService.createlog(this.username, `Success ${this.site}`);
+        this.submission.emit(this.user);
+      }
     } else {
-      this.noUser = false;
-      this.finalSelection = this.imageSelection;
-      this.imageSelection = [];
-      this.user.username = this.username;
-      this.user.password = this.finalSelection.toString();
-      this.submission.emit(this.user);
+      if (this.imageSelection.length < 3) {
+        this.noPicture = true;
+      } else if (!this.username) {
+        this.noUser = true;
+      } else {
+        this.noUser = false;
+        this.finalSelection = this.imageSelection;
+        this.imageSelection = [];
+        this.user.username = this.username;
+        this.user.password = this.finalSelection[0].toString();
+        for (let i = 1; i < this.finalSelection.length; i++) {
+          this.user.password += this.finalSelection[i].toString();
+        }
+        console.log(this.user.password);
+        this.userService.createlog(this.username, `Set Password ${this.site}`);
+        this.submission.emit(this.user);
+      }
     }
   }
   onClearClick() {

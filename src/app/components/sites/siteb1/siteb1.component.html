@@ -6,7 +6,7 @@
     <!--Login Body-->
     <div class="row">
         <div class="col">
-            <app-plaintext (submission)=submit($event)></app-plaintext>
+            <app-plaintext [site]="'b'" (submission)="submit($event)"></app-plaintext>
         </div>
     </div>
 </div>

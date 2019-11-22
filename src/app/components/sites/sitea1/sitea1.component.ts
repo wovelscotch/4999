@@ -10,13 +10,25 @@ import { Router } from '@angular/router';
 })
 export class Sitea1Component implements OnInit {
 
+  login: Login;
   constructor(private userService: UsersService, private router: Router) { }
+  sent = false;
+  notFound = false;
 
   ngOnInit() {
   }
 
   submit(user: Login) {
-    this.userService.createLogin(user, 'a');
+    if (!this.userService.getIsExisting()) {
+      this.userService.createLogin(user, 'a');
+    }
     this.router.navigateByUrl(`/site-b1`);
+  }
+  onClick() {
+    this.router.navigateByUrl(`/site-b1`);
+  }
+  onReset() {
+    this.sent = false;
+
   }
 }
