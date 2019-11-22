@@ -27,6 +27,7 @@ export class UserSelectComponent implements OnInit {
 
     //send to DB
     this.userService.createUser(newUser);
+    this.userService.createlog(newUser.username, "Created");
     this.router.navigateByUrl(`/site-a${newUser.type}`);
 
   }

@@ -15,7 +15,9 @@ export class Sitec1Component implements OnInit {
   ngOnInit() {
   }
   submit(user: Login) {
-    this.userService.createLogin(user, 'c');
+    if (!this.userService.getIsExisting()) {
+      this.userService.createLogin(user, 'c');
+    }
     this.router.navigateByUrl(`/finished`);
   }
 }

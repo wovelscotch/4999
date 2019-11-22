@@ -29,6 +29,7 @@ export class UserExistingComponent implements OnInit {
   onClick() {
     this.sent = false;
     this.userService.save(this.username);
+    this.userService.setIsExisting(true);
     this.router.navigateByUrl(`/site-a${this.user.type}`);
   }
 }

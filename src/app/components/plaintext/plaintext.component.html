@@ -11,6 +11,12 @@
                 placeholder="Password" name="pass">
         </div>
     </form>
+    <div [hidden]="!this.failed">
+        <p style="color:red">Login Failed, please try again</p>
+    </div>
+    <div [hidden]="!notLong">
+        <p style="color:red">Password must contain atleast 8 characters</p>
+    </div>
     <div>
         <button type="submit" class="btn btn-primary btn-md" (click)="onSubmit()">Login</button>
     </div>

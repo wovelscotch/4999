@@ -13,6 +13,7 @@ export class UsersService {
 
   url = "https://m7to704tc3.execute-api.us-east-2.amazonaws.com/prod/";
   savename: string;
+  isExisting = false;
   @Output() found = new EventEmitter();
 
 
@@ -33,16 +34,47 @@ export class UsersService {
       }));
   }
 
+  getLoginByName(user: string, site): Observable<Login> {
+    return this.http.get<Item>(`${this.url}site${site}/?username=${user}`).pipe(
+      map(item => {
+        var login = new Login;
+        login.username = item.Item.username;
+        login.password = item.Item.password;
+        return login;
+      }
+      ));
+  }
+
   createUser(user: User) {
     return this.http.post(`${this.url}users/?username=${user.username}&type=${user.type}`, {}).subscribe();
   }
   createLogin(user: Login, site) {
     return this.http.post(`${this.url}site${site}/?username=${user.username}&password=${user.password}`, {}).subscribe();
   }
+
+  createlog(name: string, cond: string) {
+    return this.http.post(`${this.url}log/?username=${name}&cond=${cond}`, {}).subscribe();
+  }
+
   save(username: string) {
     this.savename = username;
   }
   load(): string {
     return this.savename;
+  }
+  setIsExisting(inp: boolean) {
+    this.isExisting = inp;
+  }
+  getIsExisting(): boolean {
+    return this.isExisting;
+  }
+
+  hash(inp: string): string {
+    var h = 5381;
+    var i = inp.length;
+    while (i) {
+      h = (h * 33) ^ inp.charCodeAt(--i);
+    }
+    return (h >>> 0).toString();
   }
 }

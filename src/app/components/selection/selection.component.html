@@ -12,7 +12,8 @@
     </div>
     <div>
         <h5 class="red" [hidden]="!noUser">Username is empty</h5>
-        <h5 class="red" [hidden]="!noPicture">Password cannot be empty</h5>
+        <h5 class="red" [hidden]="!noPicture">Password must contain atleast 3 pictures</h5>
+        <h5 class="red" [hidden]="!failed">Faild to log in, please try again</h5>
         <button type="submit" class="btn btn-primary" (click)="onSubmitClick()">Login</button>
         <button type="submit" class="btn btn-secondary m-3" (click)="onClearClick()">Clear</button>
     </div>

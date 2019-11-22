@@ -1,10 +1,12 @@
 <div class="container">
     <!--Header-->
+
     <app-site-a></app-site-a>
+
     <!--Login Body-->
     <div class="row">
         <div class="col">
-            <app-plaintext (submission)=submit($event)></app-plaintext>
+            <app-plaintext [site]="'a'" (submission)="submit($event)"></app-plaintext>
         </div>
     </div>
 </div>
