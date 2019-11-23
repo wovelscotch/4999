@@ -1,4 +1,5 @@
 <div class="card p-3 m-3">
+    <h5>Select atleast 3 pictures</h5>
     <input [(ngModel)]="username" type="text" name="user" class="form-control m-3" id="username" placeholder="Username">
     <mat-grid-list cols="5" rowHeight="100px">
         <mat-grid-tile *ngFor="let image of images; index as i;" (click)="onImageClick(i)">
