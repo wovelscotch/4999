@@ -26,9 +26,13 @@ export class SelectionComponent implements OnInit {
   user = new Login;
   username: string;
   password: string = "";
+  password2: string;
+
   noPicture: boolean = false;
   noUser: boolean = false;
   failed: boolean = false;
+  again: boolean = false;
+  noMatch: boolean = false;
   counter: number = 0;
 
   @Input() site: string;
@@ -51,6 +55,7 @@ export class SelectionComponent implements OnInit {
     this.finalSelection = [];
   }
   onImageClick(i: number) {
+    this.clearBool();
     this.noPicture = false;
     this.selectedIndex = i;
     var match = this.images[i].match(/(\d+)/);
@@ -90,21 +95,46 @@ export class SelectionComponent implements OnInit {
       } else if (!this.username) {
         this.noUser = true;
       } else {
-        this.noUser = false;
-        this.finalSelection = this.imageSelection;
-        this.imageSelection = [];
-        this.user.username = this.username;
-        this.user.password = this.finalSelection[0].toString();
-        for (let i = 1; i < this.finalSelection.length; i++) {
-          this.user.password += this.finalSelection[i].toString();
+        if (this.again) {
+          this.noUser = false;
+          this.finalSelection = this.imageSelection;
+          this.imageSelection = [];
+          this.user.username = this.username;
+          this.user.password = this.finalSelection[0].toString();
+          for (let i = 1; i < this.finalSelection.length; i++) {
+            this.user.password += this.finalSelection[i].toString();
+          }
+          if (this.password2 != this.user.password) {
+            this.noMatch = true;
+            this.again = false;
+            this.password = "";
+            this.password2 = "";
+            this.user.password = "";
+            this.imageSelection = [];
+            this.finalSelection = [];
+          } else {
+            this.userService.createlog(this.username, `Set Password ${this.site}`);
+            this.submission.emit(this.user);
+          }
+        } else {
+          this.again = true;
+          this.password2 = this.imageSelection[0].toString();
+          for (let i = 1; i < this.imageSelection.length; i++) {
+            this.password2 += this.imageSelection[i].toString();
+          }
+          this.imageSelection = [];
         }
-        console.log(this.user.password);
-        this.userService.createlog(this.username, `Set Password ${this.site}`);
-        this.submission.emit(this.user);
       }
     }
   }
   onClearClick() {
+    this.clearBool();
     this.imageSelection = [];
+  }
+  clearBool() {
+    this.noPicture = false;
+    this.noUser = false;
+    this.failed = false;
+    this.noMatch = false;
   }
 }

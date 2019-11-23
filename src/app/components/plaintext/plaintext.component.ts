@@ -11,11 +11,14 @@ export class PlaintextComponent implements OnInit {
 
   username: string;
   password: string;
+  password2: string;
   user: Login;
   failed: boolean = false;
   notLong: boolean = false;
+  notMatch: boolean = false;
   @Input() site: string;
   counter: number = 0;
+  showSecond: boolean = false;
   constructor(private service: UsersService) { }
 
   @Output() submission = new EventEmitter;
@@ -25,6 +28,12 @@ export class PlaintextComponent implements OnInit {
     if (this.service.getIsExisting()) {
       this.service.getLoginByName(this.username, this.site).subscribe(u => this.user = u);
     }
+    this.showSecond = !this.service.getIsExisting();
+  }
+  onSelect() {
+    this.failed = false;
+    this.notLong = false;
+    this.notMatch = false;
   }
   onSubmit() {
     this.failed = false;
@@ -49,11 +58,15 @@ export class PlaintextComponent implements OnInit {
       if (this.password.length < 8) {
         this.notLong = true;
       } else {
-        this.user = new Login;
-        this.user.username = this.username;
-        this.user.password = this.password;
-        this.service.createlog(this.username, `Set Password ${this.site}`);
-        this.submission.emit(this.user);
+        if (this.password != this.password2) {
+          this.notMatch = true;
+        } else {
+          this.user = new Login;
+          this.user.username = this.username;
+          this.user.password = this.password;
+          this.service.createlog(this.username, `Set Password ${this.site}`);
+          this.submission.emit(this.user);
+        }
       }
     }
   }
